@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; fitgrid 0.4.11 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick start" href="Quickstart.html" />
+    <link rel="prev" title="fitgrid" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> fitgrid
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#background-signal-noise-across-time">Background: signal + noise across time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generalization-1-regression-modeling">Generalization #1: regression modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalization-2-sensor-arrays">Generalization #2: sensor arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fitting-regression-models-is-easy-regression-modeling-is-hard">Fitting regression models is easy, regression modeling is hard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fitgrid">FitGrid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#doing-statistics-in-python-and-r">Doing statistics in Python and R</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fitgrid-design">FitGrid Design</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fitgrid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background-signal-noise-across-time">
+<h2>Background: signal + noise across time<a class="headerlink" href="#background-signal-noise-across-time" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">fitgrid</span></code> began as an implementation of the regression ERP (rERP)
+framework described in <a class="reference internal" href="bibliography.html#smikut2015a" id="id1"><span>[SmiKut2015a]</span></a>. Since the 1960’s, the dominant
+(but not only) experimental paradigm in human EEG research has been
+the time-domain averge ERP. This approach uses the familiar trick of
+averaging a set of noisy measurements to get a better (more precise)
+estimate of the “true” value. Under the assumption that there is a
+small but consistent brain response to the event, averaging multiple
+measurements should tend to cancel out the (typically much larger)
+variation in the background EEG. From a signal processing perspective,
+this assumes the time-series of measurements <span class="math notranslate nohighlight">\(y_{i}\)</span> are a
+combination of event-related signal that varies systematically with
+time, <span class="math notranslate nohighlight">\(x(t)\)</span>, and random noise that does not.</p>
+<div class="math notranslate nohighlight">
+\[y_{i}(t) = x(t) + \mathit{noise}_{i}\]</div>
+<div class="section" id="generalization-1-regression-modeling">
+<h3>Generalization #1: regression modeling<a class="headerlink" href="#generalization-1-regression-modeling" title="Permalink to this headline">¶</a></h3>
+<p>As Smith pointed out, the signal + noise model is a special case of
+linear regression. The familiar time-domain average ERP is
+mathematically identical to the estimated intercept coefficient
+<span class="math notranslate nohighlight">\(\hat{\beta}_{0}\)</span> (“beta-hat nought”) in an intercept-only
+linear regression model fit to the <span class="math notranslate nohighlight">\(n\)</span> data samples <span class="math notranslate nohighlight">\(i =
+0, ... n\)</span> at each time point <span class="math notranslate nohighlight">\(t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[y_{i}(t) = \beta_{0}(t) + \epsilon_{i}\]</div>
+<p>The time series of these <span class="math notranslate nohighlight">\(\hat{\beta}_{0}\)</span> estimates is exactly
+the time-domain average ERP viewed from a regression modeling
+perspective. More generally, regression models characterize
+relationships between multiple predictor variables <span class="math notranslate nohighlight">\(X_{1} ... X_{k}\)</span> and
+the response variable <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[y_{i}(t) = \beta_{0}(t) + \beta_{1}X_{1}(t) +
+... \beta_{k}X_{k}(t) + \epsilon_{i}\]</div>
+<p>Fitting such models at each time point estimates all the <span class="math notranslate nohighlight">\(\beta\)</span>
+s together. Smith dubbed the time series of these beta-hats
+<span class="math notranslate nohighlight">\(\hat{\beta}_{0}, \hat{\beta}_{1}, \hat{\beta}_{k}\)</span> regression
+ERPs, of which the familiar time-domain average is one special case.</p>
+<p>The rERP framework encourages a shift in perspective from the
+engineering view in which “the” ERP signal is a needle in the haystack
+of background EEG to be discovered by averaging, to a data modelling
+perspective that asks questions like, “which beta-hat regression ERPs
+<span class="math notranslate nohighlight">\(\hat{\beta}_{0} ... \hat{\beta}_{n}\)</span> best model the data?” and
+relies on tried and true methods of applied regression analysis for
+answers.</p>
+</div>
+<div class="section" id="generalization-2-sensor-arrays">
+<h3>Generalization #2: sensor arrays<a class="headerlink" href="#generalization-2-sensor-arrays" title="Permalink to this headline">¶</a></h3>
+<p>Regression ERPs sweep a regression model across EEG data recordings
+time-point by time-point, channel by channel, to track how the model
+estimates and goodness of fits evolve over time at different scalp
+locations.</p>
+<p>EEG recordings are a special case of regularly sampled, discrete
+time-series, synchronized across a sensor array. Synchronized
+multi-sensor recording arrays abound in neuroimaing and across the
+physical sciences and engineering: magneto-encephalogray,
+event-related fMRI, weather stations, buoy arrays, Internet of Things.</p>
+<p>Stepping back from EEG data analysis, we see that versions of the
+“event-related mass time-series regression modeling” approach could be
+be applied to event-related sensor array data in a wide range of other
+domains where regression modeling is appropriate</p>
+<p>However.</p>
+</div>
+</div>
+<div class="section" id="fitting-regression-models-is-easy-regression-modeling-is-hard">
+<h2>Fitting regression models is easy, regression modeling is hard<a class="headerlink" href="#fitting-regression-models-is-easy-regression-modeling-is-hard" title="Permalink to this headline">¶</a></h2>
+<p>Guidance on regression modelling best practices emphasizes the fluid,
+iterative nature of the project: data screening for pathological
+(non-)data points; preliminary model fitting; diagnostic testing for
+outliers and influential data points, examination of residuals for
+signs of violated assumptions; evaluation of signs of over-fitting,
+multicollinearity. Evaluate, remediate, refit, adjust parameters,
+refit. Repeat as necessary. [GelHil200</p>
+<p>This is for a single model. Regression analyses that model arrays of
+multi-channel time series such as EEG data time point by time point,
+channel by channel, multiply these iterative investigation by the
+number of points x the number of channels in a combinatorial
+explosion. There are 750 time points in 3 second epochs of EEG data
+sampled 250 times per second. For 32 EEG channels, this makes 750
+timepoints x 32 channels = 24,000 data sets. The pairwise comparison
+of three candidate models requires 72,000 model fits.</p>
+<p>Nothing can prevent this combinatorial explosion, FitGrid is a
+resource for managing it.</p>
+</div>
+<div class="section" id="fitgrid">
+<h2>FitGrid<a class="headerlink" href="#fitgrid" title="Permalink to this headline">¶</a></h2>
+<p>For an overview of the workflow see <a class="reference internal" href="Quickstart.html"><span class="doc">Quick start</span></a></p>
+<p>With one function call, FitGrid sweeps a model formula cross each of
+the timepoints x channels (in parallel on multiple CPU cores if
+supported by hardware) and collects the fits. When the fitting is
+complete the results of the fitting and diagnostic measures can be
+queried in a format ready for visualization and analysis.</p>
+<p>To make things easier, models are defined using the formula
+language notations familiar from R.</p>
+<p>Ordinary least squares models are fit in Python using the
+<a class="reference external" href="http://www.statsmodels.org">statsmodels</a> statstics package and the <a class="reference external" href="https://patsy.readthedocs.io/en/latest/">patsy</a> formula language. Linear
+mixed effects models are shipped out of Python and into R via the
+<a class="reference external" href="https://github.com/kmerkmer/pymer">pymer</a> interface and fit with
+<a class="reference external" href="https://cran.r-project.org/web/packages/lme4/index.html">lme4::lmer</a> (see
+<a class="reference internal" href="bibliography.html#batmaebolwal2015" id="id2"><span>[BatMaeBolWal2015]</span></a>).</p>
+<div class="section" id="doing-statistics-in-python-and-r">
+<h3>Doing statistics in Python and R<a class="headerlink" href="#doing-statistics-in-python-and-r" title="Permalink to this headline">¶</a></h3>
+<p>The modeling described above can be done using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, the major
+statistics package in Python. Suppose you have a pandas DataFrame <code class="docutils literal notranslate"><span class="pre">data</span></code> with
+independent variables <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code>, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is continuous and <code class="docutils literal notranslate"><span class="pre">a</span></code> is
+categorical. Suppose also <code class="docutils literal notranslate"><span class="pre">channel</span></code> is your continuous dependent variable.
+Here’s how you would run linear regression of <code class="docutils literal notranslate"><span class="pre">y</span></code> on <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">a</span></code> using
+<a class="reference external" href="http://www.statsmodels.org">statsmodels</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+
+<span class="n">fit</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">&#39;channel ~ x + a&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now this <code class="docutils literal notranslate"><span class="pre">fit</span></code> object contains all the fit and diagnostic information,
+mirroring what is provided by <code class="docutils literal notranslate"><span class="pre">lm</span></code> in R. This information can be retrieved by
+accessing various attributes of <code class="docutils literal notranslate"><span class="pre">fit</span></code>. For example, the betas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">betas</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+<p>or the t-values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tvalues</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">tvalues</span>
+</pre></div>
+</div>
+<p>or <span class="math notranslate nohighlight">\(Pr(&gt;|t|)\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pvalues</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">pvalues</span>
+</pre></div>
+</div>
+<p>Compare to R, where this is usually done by calling functions like <code class="docutils literal notranslate"><span class="pre">summary</span></code>
+or <code class="docutils literal notranslate"><span class="pre">coef</span></code>.</p>
+<p>Now the issue with using that interface for single trial rERP analyses is of
+course the dimensionality: instead of fitting a single model, we need to fit
+<span class="math notranslate nohighlight">\(m \times n\)</span> models, where <span class="math notranslate nohighlight">\(m\)</span> is the number of samples and
+<span class="math notranslate nohighlight">\(n\)</span> is the number of channels.</p>
+<p>This can be handled using <code class="docutils literal notranslate"><span class="pre">for</span></code> loops of the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">timepoint</span> <span class="ow">in</span> <span class="n">timepoints</span><span class="p">:</span>
+        <span class="c1"># run regression &#39;channel ~ x + a&#39;, save fit object somewhere</span>
+</pre></div>
+</div>
+<p>And to access some particular kind of fit information, the exact same two
+nested <code class="docutils literal notranslate"><span class="pre">for</span></code> loops are required:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">timepoint</span> <span class="ow">in</span> <span class="n">timepoints</span><span class="p">:</span>
+        <span class="c1"># extract diagnostic or fit measure, save it somewhere</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fitgrid-design">
+<h3>FitGrid Design<a class="headerlink" href="#fitgrid-design" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fitgrid</span></code> abstracts this complexity away and handles the iteration and
+storage of the data behind the scenes. The first loop above is now replaced
+with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">fitgrid</span><span class="o">.</span><span class="n">lm</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">RHS</span><span class="o">=</span><span class="s1">&#39;x + a&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and the second loop with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">betas</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tvalues</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">tvalues</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pvalues</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">pvalues</span>
+</pre></div>
+</div>
+<p>The crux of the design approach is that <code class="docutils literal notranslate"><span class="pre">grid</span></code>, a <code class="docutils literal notranslate"><span class="pre">FitGrid</span></code> object, can
+be queried for the exact same attributes as a regular <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> <code class="docutils literal notranslate"><span class="pre">fit</span></code>
+object (see section above). The result is most often a pandas DataFrame,
+sometimes another <code class="docutils literal notranslate"><span class="pre">FitGrid</span></code>. In other words, if you are running linear
+regression, any attribute of a fit object <a class="reference external" href="http://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.RegressionResults.html">documented</a>
+by <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> as part of their API, can be used to query a <code class="docutils literal notranslate"><span class="pre">FitGrid</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="o">.</span><span class="n">rsquared</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fitgrid</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="o">.</span><span class="n">rsquared</span>
+</pre></div>
+</div>
+<p>Some of the attributes are methods. For example, influence diagnostics in
+<code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> are stored in a separate object that is created by calling the
+<code class="docutils literal notranslate"><span class="pre">get_influence</span></code> method. So Cook’s distance measures can be retrieved as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">influence</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">get_influence</span><span class="p">()</span>
+<span class="n">cooks_d</span> <span class="o">=</span> <span class="n">influence</span><span class="o">.</span><span class="n">cooks_distance</span>
+</pre></div>
+</div>
+<p>The exact same approach works in <code class="docutils literal notranslate"><span class="pre">fitgrid</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">influence</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">get_influence</span><span class="p">()</span>
+<span class="n">cooks_d</span> <span class="o">=</span> <span class="n">influence</span><span class="o">.</span><span class="n">cooks_distance</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Quickstart.html" class="btn btn-neutral float-right" title="Quick start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="fitgrid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

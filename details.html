@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Details &mdash; fitgrid 0.4.11 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="prev" title="Quick start" href="Quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> fitgrid
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quick start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-mixed-effects-models-are-run">How mixed effects models are run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saving-and-loading-grids">Saving and loading grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multicore-model-fitting">Multicore model fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-routines">Useful routines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fitgrid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Details</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="details">
+<h1>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-mixed-effects-models-are-run">
+<h2>How mixed effects models are run<a class="headerlink" href="#how-mixed-effects-models-are-run" title="Permalink to this headline">¶</a></h2>
+<p>Mixed effects models do not have a complete implementation in Python, so we
+interface with R from Python and use <cite>lme4</cite> in R. The results that you get when
+fitting mixed effects models in <cite>fitgrid</cite> are the same as if you used <cite>lme4</cite>
+directly, because we use <cite>lme4</cite> (indirectly).</p>
+</div>
+<div class="section" id="saving-and-loading-grids">
+<h2>Saving and loading grids<a class="headerlink" href="#saving-and-loading-grids" title="Permalink to this headline">¶</a></h2>
+<p>Running models like <cite>lmer</cite> on large datasets can take a long time. <cite>fitgrid</cite>
+lets you save your grid to disk so you can restore them later without having to
+refit the models. Suppose you run <cite>lmer</cite> like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">fitgrid</span><span class="o">.</span><span class="n">lmer</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">RHS</span><span class="o">=</span><span class="s1">&#39;x + (x|a)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Save the <code class="docutils literal notranslate"><span class="pre">grid</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;lmer_results&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Later you can reload the <code class="docutils literal notranslate"><span class="pre">grid</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">fitgrid</span><span class="o">.</span><span class="n">load_grid</span><span class="p">(</span><span class="s1">&#39;lmer_results&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multicore-model-fitting">
+<h2>Multicore model fitting<a class="headerlink" href="#multicore-model-fitting" title="Permalink to this headline">¶</a></h2>
+<p>On a multicore machine, model fitting can be parallelized to achieve a
+significant speedup. <code class="docutils literal notranslate"><span class="pre">fitgrid.lm</span></code> uses <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> under the hood to fit
+a linear least squares model, which in turn employs <code class="docutils literal notranslate"><span class="pre">numpy</span></code> for calculations.
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code> itself depends on linear algebra libraries that might be configured
+to use multiple threads by default. This means that on a 48 core machine,
+common linear algebra calculations might use 24 cores automatically, without
+any explicit parallelization. So when you explicitly parallelize your
+calculations using Python processes (say 4 of them), each process might start
+24 threads. In this situation, 96 CPU bound threads are wrestling each other
+for time on the 48 core CPU. This is called oversubscription and results in
+<em>slower</em> computations.</p>
+<p>To deal with this when running <code class="docutils literal notranslate"><span class="pre">fitgrid.lm</span></code>, we try to instruct the linear
+algebra libraries your <code class="docutils literal notranslate"><span class="pre">numpy</span></code> distribution depends on to only use a single
+thread in every computation. This then lets you control the number of CPU cores
+being used by setting the <code class="docutils literal notranslate"><span class="pre">n_cores</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">fitgrid.lm</span></code>.</p>
+<p>If you are using your own 8-core laptop, you might want to use all cores, so
+set something like <code class="docutils literal notranslate"><span class="pre">n_cores=7</span></code>. On a shared machine, it’s a good idea to run
+on half or 3/4 of the cores if no one else is running heavy computations.</p>
+</div>
+<div class="section" id="useful-routines">
+<h2>Useful routines<a class="headerlink" href="#useful-routines" title="Permalink to this headline">¶</a></h2>
+<p>Several diagnostic routines are available in <code class="docutils literal notranslate"><span class="pre">fitgrid.utils</span></code>. See
+<a class="reference internal" href="reference.html#model-diagnostic-utilities"><span class="std std-ref">Utilities</span></a> for details.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Quickstart.html" class="btn btn-neutral float-left" title="Quick start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
