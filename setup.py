@@ -1,10 +1,15 @@
-# To install fitgrid in development mode see
-# kutaslab.github.io/fitgrid-dev-docs/contributing.html
+"""To install fitgrid in development mode see
+kutaslab.github.io/fitgrid-dev-docs/contributing.html
+"""
 
+import re
 from setuptools import find_packages, setup
+
 
 # from fitgrid.version import __version__
 def get_ver():
+    """format check"""
+
     with open("./fitgrid/__init__.py", "r") as stream:
         fg_ver = re.search(
             r".*__version__.*=.*[\"\'](?P<ver_str>\d+\.\d+\.\d+\S*)[\'\"].*",
@@ -12,17 +17,19 @@ def get_ver():
         )
 
     if fg_ver is None:
-        msg = f"""
+        msg = """
         fitgrid.__init__.py must have an X.Y.Z semantic version, e.g.,
         __version__ = '0.0.0'
         __version__ = '0.0.0-dev.0.0'
         """
         raise ValueError(msg)
-    else:
-        return fg_ver['ver_str']
+
+    return fg_ver['ver_str']
 
 
 def readme():
+    """slurp text"""
+
     with open('README.md') as strm:
         return strm.read()
 
