@@ -120,7 +120,7 @@ jobs:
           # switch to mamba/boa and conda-forge
           conda config --add channels conda-forge
           conda config --set channel_priority strict
-          conda install -n base -q conda-build conda-verify anaconda-client numpy twine mamba boa
+          conda install -n base -q conda-build conda-verify anaconda-client twine mamba boa
           echo "# ------------------------------------------------------------"
           conda info -a
           echo "# ------------------------------------------------------------"

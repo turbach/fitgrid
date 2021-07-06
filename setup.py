@@ -2,9 +2,24 @@
 # kutaslab.github.io/fitgrid-dev-docs/contributing.html
 
 from setuptools import find_packages, setup
-from fitgrid import get_ver
 
-__version__ = get_ver()
+# from fitgrid.version import __version__
+def get_ver():
+    with open("./fitgrid/__init__.py", "r") as stream:
+        fg_ver = re.search(
+            r".*__version__.*=.*[\"\'](?P<ver_str>\d+\.\d+\.\d+\S*)[\'\"].*",
+            stream.read(),
+        )
+
+    if fg_ver is None:
+        msg = f"""
+        fitgrid.__init__.py must have an X.Y.Z semantic version, e.g.,
+        __version__ = '0.0.0'
+        __version__ = '0.0.0-dev.0.0'
+        """
+        raise ValueError(msg)
+    else:
+        return fg_ver['ver_str']
 
 
 def readme():
@@ -27,12 +42,4 @@ setup(
         "Intended Audience :: Science/Research",
     ],
     packages=find_packages(exclude=['tests']),
-    install_requires=[
-        'patsy',
-        'statsmodels',
-        'matplotlib',
-        'scipy',
-        'tqdm',
-        'tables',
-    ],
 )
