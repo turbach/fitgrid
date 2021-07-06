@@ -14,15 +14,12 @@
 #
 import os
 import sys
-import re
 
 sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('.'))
 
 # after sys.path.insert to import local __version__
-from fitgrid import get_ver
-
-__version__ = get_ver()
+from fitgrid import __version__
 
 # -- Project information -----------------------------------------------------
 
