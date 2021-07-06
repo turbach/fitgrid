@@ -29,6 +29,7 @@ how the epochs data were prepared see :ref:`noaa_epochs`.
 """
 
 import pandas as pd
+
 # to suppress datetime FutureWarning
 from pandas.plotting import register_matplotlib_converters
 from matplotlib import pyplot as plt

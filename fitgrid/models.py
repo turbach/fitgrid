@@ -208,12 +208,12 @@ def lmer_single(
     # DEPRECATED redirect_stdout as of pymer 0.7+
     # with redirect_stdout(StringIO()) as captured_stdout:
     model.fit(
-            summarize=False,
-            conf_int=conf_int,
-            factors=factors,
-            permute=permute,
-            ordered=ordered,
-            REML=REML,
+        summarize=False,
+        conf_int=conf_int,
+        factors=factors,
+        permute=permute,
+        ordered=ordered,
+        REML=REML,
     )
 
     # lmer prints warnings, capture them

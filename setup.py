@@ -1,33 +1,15 @@
-# To install fitgrid for development in a conda environment see
+# To install fitgrid in development mode see
 # kutaslab.github.io/fitgrid-dev-docs/contributing.html
 
-import re
 from setuptools import find_packages, setup
+from fitgrid import get_ver
 
-
-def get_ver():
-    with open("./fitgrid/__init__.py", "r") as stream:
-        fg_ver = re.search(
-            r".*__version__.*=.*[\"\'](?P<ver_str>\d+\.\d+\.\d+\S*)[\'\"].*",
-            stream.read(),
-        )
-
-    if fg_ver is None:
-        msg = f"""
-        fitgrid.__init__.py must have an X.Y.Z semantic version, e.g.,
-
-        __version__ = '0.0.0'
-        __version__ = '0.0.0-dev.0.0'
-
-        """
-        raise ValueError(msg)
-    else:
-        return fg_ver['ver_str']
+__version__ = get_ver()
 
 
 def readme():
-    with open('README.md') as f:
-        return f.read()
+    with open('README.md') as strm:
+        return strm.read()
 
 
 setup(
