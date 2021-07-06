@@ -1,18 +1,10 @@
-# to install in development mode, from this directory run
-#
-#     pip install --user -e .
-#
-# to install stable package systemwide, as root run
-#
-#     pip install .
-#
-# http://python-packaging.readthedocs.io/en/latest/minimal.html
+# To install fitgrid for development in a conda environment see
+# kutaslab.github.io/fitgrid-dev-docs/contributing.html
 
 import re
 from setuptools import find_packages, setup
 
 
-# from fitgrid.version import __version__
 def get_ver():
     with open("./fitgrid/__init__.py", "r") as stream:
         fg_ver = re.search(
@@ -53,12 +45,4 @@ setup(
         "Intended Audience :: Science/Research",
     ],
     packages=find_packages(exclude=['tests']),
-    install_requires=[
-        'patsy',
-        'statsmodels',
-        'matplotlib',
-        'scipy',
-        'tqdm',
-        'tables',
-    ],
 )
