@@ -27,4 +27,12 @@ setup(
         "Intended Audience :: Science/Research",
     ],
     packages=find_packages(exclude=['tests']),
+    install_requires=[
+        'patsy',
+        'statsmodels',
+        'matplotlib',
+        'scipy',
+        'tqdm',
+        'tables',
+    ],
 )
