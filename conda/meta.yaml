@@ -18,7 +18,6 @@ build:
 requirements:
   host:
     - python {{ python }}
-    - numpy
     - pip
   run:
     - python {{ python }}
